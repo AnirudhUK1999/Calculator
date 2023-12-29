@@ -31,7 +31,7 @@ body{
     /* gap: 2px; */
     justify-content: space-evenly;
     margin: 0px;
-    pad: 0px;
+    padding: 0px;
 }
 
 .buttons-container{
@@ -40,6 +40,7 @@ body{
     gap: 4px;
     /* flex: 1; */
     flex-wrap: wrap;
+    border: solid blueviolet;
 }
 
 button{
@@ -50,7 +51,7 @@ button{
 .nums{
     display: flex;
     flex-wrap: wrap;
-    border: solid gray;
+    /* border: solid gray; */
     gap: 8px;
     justify-content: space-evenly;
     padding: 8px;
@@ -63,21 +64,33 @@ button{
     flex-wrap: wrap;
     gap: 4px;
     justify-content: space-between;
-    border: solid gray;
+    /* border: solid gray; */
     padding: 6px;
     /* width: 30px; */
     flex-direction: column;
 }
 
+.misc-container{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.misc-container{
+    display: flex;
+    padding: 8px;
+    justify-content: flex-start;
+}
+
 div.display>div{
     display: flex;
-    border: solid yellowgreen 0.5px;
+    /* border: solid yellowgreen 0.5px; */
     justify-content: space-between;
     /* height: 16px;
     width: 16px; */
     flex-basis: 20%; /* 40% for square*/
+    flex: 1;
     flex-wrap: wrap;
-    flex-direction: column;
     margin: 0px;
     padding: 0px;
     /* gap: 8px; */
@@ -86,4 +99,10 @@ div.display>div{
 
 div.display>div:hover{
     background-color: lightblue;
+}
+
+.one-one{
+    display: flex;
+    /* align-content: right; */
+    align-self: flex-end;
 }
