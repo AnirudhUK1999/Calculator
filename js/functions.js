@@ -1,5 +1,3 @@
-// import buttonCreation from helper.js;
-
 function add(num1,num2){
     return num1+num2;
 }
@@ -15,7 +13,7 @@ function multiply(num1,num2){
 }
 
 function divide(num1,num2){
-    return num1/num2;
+    return (num1/num2).toFixed(2);
 }
 
 function operate(num1,operator,num2){
@@ -24,72 +22,94 @@ function operate(num1,operator,num2){
     num2 = Number(num2)
     operator = String(operator)
     
-    if(operator == "+")
-        res = add(num1,num2);
+    switch (operator) {
+        case "+":
+            res = add(num1,num2);
+            break;
+        case "-":
+            res = subtract(num1,num2);
+            break;
+        case "*":
+            res = multiply(num1,num2);
+            break;
+        case "/":
+            if(num2 == 0)
+                return "ERR"
+            res = divide(num1,num2);
+            break;
+        default:
+            break;
+        
+    }
+    return res;
 
-    else if(operator == "-")
-        res = subtract(num1,num2);
+    // if(operator == "+")
+    //     res = add(num1,num2);
 
-    else if(operator == "*")
-        res = multiply(num1,num2);
-    else
-        res = divide(num1,num2);
+    // else if(operator == "-")
+    //     res = subtract(num1,num2);
+
+    // else if(operator == "*")
+    //     res = multiply(num1,num2);
+    // else
+    //     res = divide(num1,num2);
     
-    return res
+    // return res
 }
 
-
-// function showDisplay(){
-//     let numEvents = document.querySelectorAll('button');
-//     numEvents = Array.from(numEvents);
-//     numEvents.forEach(numEvent => 
-//         numEvent.addEventListener('click', () => {test(numEvent.textContent)}
-//         // val => 
-//         // {
-//         //     console.log();
-//         // }
-//         )
-//         );
-// }
-
-// function showDisplay(){
-    
-// }
+let perform = []
 
 let numEvents = document.querySelectorAll('button');
-    numEvents.forEach(numEvent => numEvent.addEventListener('click',() => test(numEvent.textContent)))
-        // val => 
-        // {
-        //     console.log();
-        // }
-        ;
 
-let connect = "";
-function test(val){
-    let displayNum = document.querySelector('.display>.one-one');
-    let idk = 0
-    connect = connect.concat(val);
-    console.log("connect "+connect);
-    displayNum.textContent = connect;
-    let add = connect.indexOf("+")
-    let sub = connect.indexOf("-")
-    let mul = connect.indexOf("*")
-    let div = connect.indexOf("/")
-    idx = add * sub * mul * div;
-    if(val == "C"){
+numEvents.forEach(numEvent => 
+    numEvent.addEventListener('click', () => addingToQueue(numEvent.textContent)))
+
+let temp = ""
+let show = "";
+let startFlag = true;
+let op = []
+function addingToQueue(value){
+    let displayNum = document.querySelector('.display>.one-one');   //select display
+    show += value   //concat strings from buttons
+    if(value != "=")
+        displayNum.textContent = show; 
+    if(value == "C"){
         displayNum.textContent = null;
-        connect = "";
+        show = "";
+        perform = []
+        temp = ""
     }
-    console.log(idx)
-    if(val == "=" && idx != 1){
-        idx *= -1;
-        let res = operate(connect.slice(0,idx),connect[idx],connect.slice(idx+1,connect.length-1));
-        console.log("res "+res);
-        displayNum.textContent = res;
-        connect = String(res);
-        console.log(idx)
-        
+
+    /*Check if button input is not a number 
+     * Indicates number input from user finished
+     * Push concated temp value and operation symbol to array
+     * Finally clear the variables*/
+    else if(!isFinite(value) && value != "C"){
+        perform.push(temp);
+        perform.push(value);
+        temp = "";
+        value = "";
     }
-        
-    // console.log('button pressed ' + val);
+
+    if(value != "C")  //keep concatenating
+        temp += value;
+    
+    
+    // console.log(perform.length);
+    /* if array size exceeds size 3, implies result should be calculated for pair of nums*/
+    if(perform.length>3){
+        op = perform.splice(0,3)
+        let res = operate(op[0],op[1],op[2]);
+        perform.unshift(res)
+        displayNum.textContent = perform.join('').includes("=") ? perform.slice(0,-1).join('') : perform.join('');
+        show = perform.join('') + value;  
+    }
+    
+    // console.log("perform: "+perform)
+
 }
+
+    
+
+
+
