@@ -23,6 +23,8 @@ body{
     justify-content: space-evenly;
     background-color: darkolivegreen;
     border-radius: 8%;
+    min-width: 300px;
+    /* min-height: 100%; */
 }
 
 .display{
@@ -52,7 +54,7 @@ body{
     height: 60%;
     background-color: black;
     border-radius: 3%;
-    
+    min-width: 100%; 
 }
 
 
@@ -65,9 +67,6 @@ body{
     padding: 0px;
     flex-basis: 60%;
     height: 100%;
-    
-    
-    
 }
 
 button{
