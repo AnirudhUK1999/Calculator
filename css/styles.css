@@ -21,18 +21,19 @@ body{
     flex-wrap: wrap;
     /* gap: 8px; */
     justify-content: space-evenly;
-    background-color: darkolivegreen;
+    background-color: slateblue;
     border-radius: 8%;
-    min-width: 300px;
+    /* min-width: 300px; */
     /* min-height: 100%; */
+    max-width: 300px;
 }
 
 .display{
     display: flex;
     border: solid turquoise;
     height: 25%; 
-    /* min-width: auto;
-    overflow: hidden; */
+    min-width: 60%;
+    /* overflow: hidden; */ */
     flex-wrap: wrap;
     /* flex-basis: 50%; */
     flex-direction: column;
@@ -130,3 +131,50 @@ div.display>div:hover{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     align-content: flex-end;
 }
+
+@media only screen and (min-width: 1375px) {
+    .calc-container{
+        /* display: flex; */
+        border: solid black 8px;
+        padding: 16px;
+        /* flex-direction: column;
+        width: 30%;
+        height: 70%;
+        flex-wrap: wrap; */
+        /* gap: 8px; */
+        /* justify-content: space-evenly;
+        background-color: darkolivegreen;
+        border-radius: 8%;
+        min-width: 400px;
+        max-width: 150%;
+        min-height: 75%; */
+        min-width: 50%;
+        max-width: 250px;
+        /* width: 160%; */
+        
+    }
+    .nums{
+        gap: 4px;
+    }
+    .num{
+        width: 32%;
+        /* gap: px; */
+        margin: 0px;
+        font-size: xx-large;
+        /* align-content: center */
+    }
+    .clear,.add,.subtract,.divide,.multiply,.equals{
+        height: 30%;
+        width: 45%;
+        font-size: xx-large;
+        margin: 4px;
+    }
+    body{
+        /* display: flex; */
+        /* border: solid red; */
+        /* align-items: center; */
+        /* justify-content: center; */
+        padding: 0px;
+        /* background-color: #d3d3d3; */
+    }
+  }
